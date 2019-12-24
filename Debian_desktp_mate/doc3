@@ -1,0 +1,16 @@
+Pour le script
+----------------
+apt install mate-desktop-environment-extras -y
+terminator
+remmina
+
+
+
+
+CMD ["echo","salut daniel"]
+#CMD ["vncserver",":1","-geometry","800x600","-localhost","no"]
+#CMD ["websockify","-D","--web=/usr/share/novnc/","--cert=/home/$debuser/novnc.pem","6080","localhost:5901"]
+#RUN su - $debuser -c "vncserver :1 -geometry 800x600 -localhost no" 
+#CMD websockify -D --web=/usr/share/novnc/ --cert=/home/$debuser/novnc.pem 6080 localhost:5901
+#RUN su - $debuser -c "websockify -D --web=/usr/share/novnc/ --cert=/home/$debuser/novnc.pem 6080 localhost:5901"
+
