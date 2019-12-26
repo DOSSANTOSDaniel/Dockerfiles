@@ -1,4 +1,4 @@
-# Image de base
+# Imagede base
 FROM debian:10.2
 
 # Variables
@@ -6,41 +6,97 @@ ENV debuser="toto"
 # Attention mettre au moins 8 caractères
 ENV debpasswd="toto2019"
 ENV rootpasswd="$debpasswd"
-ENV lang="LANG=fr_FR.UTF-8"
+ENV lang="fr_FR.UTF-8"
 
-# Erreurs
-RUN apt update && apt install dialog -yqq && apt install apt-utils -yqq && echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
+# mise à jour
+RUN apt update \
+&& apt full-upgrade -y
+
+# langue
+RUN apt install -y locales && \
+    echo "Europe/Paris" > /etc/timezone && \
+    dpkg-reconfigure -f noninteractive tzdata && \
+    sed -i -e 's/# en_US.UTF-8 UTF-8/fr_FR.UTF-8 UTF-8/' /etc/locale.gen && \
+    sed -i -e 's/# de_AT.UTF-8 UTF-8/fr_FR.UTF-8 UTF-8/' /etc/locale.gen && \
+    echo 'LANG="fr_FR.UTF-8"'>/etc/default/locale && \
+    dpkg-reconfigure --frontend=noninteractive locales && \
+    update-locale LANG=fr_FR.UTF-8
+
+# Dependances
+RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections \
+&& apt install xorg -y \
+&& apt install dbus-x11 -y \
+&& apt install x11-xserver-utils -y \
+&& apt install procps -y \
+&& apt install xdg-utils -y \
+&& apt install xdg-user-dirs -y \
+&& apt install menu-xdg -y \
+&& apt install mime-support -y \
+&& apt install desktop-file-utils -y \
+&& apt install mesa-utils -y \
+&& apt install psmisc -y \
+&& apt install mesa-utils-extra -y \
+&& apt install libxv1 -y \
+&& apt install python -y \
+&& apt install python-numpy -y \
+&& apt install firefox-esr -y \
+&& apt install iproute2 -y \
+&& apt install wget -y \
+&& apt install curl -y \
+&& apt install iproute2 -y \
+&& apt install vim -y \
+&& apt install dialog -y \ 
+&& apt install apt-utils -y \ 
+&& apt install apt-file -y \
+&& apt install apt-transport-https -y \
+&& apt install ca-certificates -y \
+&& apt install software-properties-common -y \
+&& apt install man -y \
+&& apt install sudo -y \
+&& apt install gpg-agent -y \
+&& apt install build-essential -y \
+&& apt install openssh-server -y \
+&& apt install python -y \
+&& apt install python3 -y \
+&& apt install python3-distutils -y \
+&& apt install python3-tk -y \
+&& apt install python3-dbus -y \
+&& apt install xpdf -y
 
 # Création d'utilisateur
 RUN useradd -ms /bin/bash $debuser
 
-#Configuration des locales
-RUN apt-get install locales -yqq && export $lang
+# Installation de Mate
+RUN apt install tasksel -y \
+&& tasksel install mate-desktop \
+&& apt install procps -y \
+&& apt install fortunes -y
 
-# Installation de tightvncserver
+# Installation de vnc4server
+RUN apt install vnc4server -y
+
+# Répertoire de travail
 WORKDIR /home/$debuser
-RUN apt install tightvncserver -yqq
 
 # Installation de NoVNC
-RUN apt install git -yqq
-RUN git clone https://github.com/novnc/noVNC.git
+RUN apt install git -y \
+&& git clone https://github.com/novnc/noVNC.git
 
-# Installation et configuration de lxde
-RUN apt install tasksel -yqq
-RUN tasksel install mate-desktop
+# Partage
+RUN mkdir /home/$debuser/Partage
 
-# Lancement des serveurs
-RUN su - $debuser -c "yes $debpasswd | vncpasswd -t"
-RUN mv /tmp/$debuser-vnc /home/$debuser/.vnc
+# Démarrage
+RUN su - $debuser -c "yes $debpasswd | vncpasswd"
+RUN chown -R $debuser:$debuser /home/$debuser
 CMD su - $debuser -c "vncserver && /home/$debuser/noVNC/utils/launch.sh --vnc localhost:5901"
-#RUN chmod -R 777 /home/toto/
-RUN chown -R $debuser:$debuser /home/toto/
 
 # Password
-RUN yes $debpasswd | passwd $debuser
-RUN yes $rootpasswd | passwd
-WORKDIR /home/$debuser
+RUN yes $debpasswd | passwd $debuser\
+&& yes $rootpasswd | passwd
+
+# Ports ouverts
 EXPOSE 6080
 EXPOSE 5901
 
+# Volume
 VOLUME /home/$debuser/Partage
