@@ -1,26 +1,26 @@
 # Imagede base
 FROM debian:10.2
+MAINTAINER Daniel DOS SANTOS <daniel.massy91@gmail.com>
 
 # Variables
 ENV debuser="toto"
 # Attention mettre au moins 8 caractères
 ENV debpasswd="toto2019"
 ENV rootpasswd="$debpasswd"
-ENV lang="fr_FR.UTF-8"
 
 # mise à jour
 RUN apt update \
 && apt full-upgrade -y
 
 # langue
-RUN apt install -y locales && \
-    echo "Europe/Paris" > /etc/timezone && \
-    dpkg-reconfigure -f noninteractive tzdata && \
-    sed -i -e 's/# en_US.UTF-8 UTF-8/fr_FR.UTF-8 UTF-8/' /etc/locale.gen && \
-    sed -i -e 's/# de_AT.UTF-8 UTF-8/fr_FR.UTF-8 UTF-8/' /etc/locale.gen && \
-    echo 'LANG="fr_FR.UTF-8"'>/etc/default/locale && \
-    dpkg-reconfigure --frontend=noninteractive locales && \
-    update-locale LANG=fr_FR.UTF-8
+RUN apt install locales -y \
+&& echo "Europe/Paris" > /etc/timezone \
+&& dpkg-reconfigure -f noninteractive tzdata \
+&& sed -i -e 's/# en_US.UTF-8 UTF-8/fr_FR.UTF-8 UTF-8/' /etc/locale.gen \
+&& sed -i -e 's/# de_AT.UTF-8 UTF-8/fr_FR.UTF-8 UTF-8/' /etc/locale.gen \
+&& echo 'LANG="fr_FR.UTF-8"'>/etc/default/locale \
+&& dpkg-reconfigure --frontend=noninteractive locales \
+&& update-locale LANG=fr_FR.UTF-8
 
 # Dependances
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections \
