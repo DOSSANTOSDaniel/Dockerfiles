@@ -1,4 +1,5 @@
 FROM php:7.3-apache
+MAINTAINER Daniel DOS SANTOS <daniel.massy91@gmail.com>
 USER root
 RUN apt update && apt upgrade -y
 COPY dokuwiki /var/www/html/
