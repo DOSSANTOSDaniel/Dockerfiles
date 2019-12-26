@@ -1,4 +1,4 @@
-# Imagede base
+# Image de base
 FROM debian:10.2
 MAINTAINER Daniel DOS SANTOS <daniel.massy91@gmail.com>
 
@@ -8,11 +8,11 @@ ENV debuser="toto"
 ENV debpasswd="toto2019"
 ENV rootpasswd="$debpasswd"
 
-# mise à jour
+# Mise à jour
 RUN apt update \
 && apt full-upgrade -y
 
-# langue
+# Langue
 RUN apt install locales -y \
 && echo "Europe/Paris" > /etc/timezone \
 && dpkg-reconfigure -f noninteractive tzdata \
@@ -22,7 +22,7 @@ RUN apt install locales -y \
 && dpkg-reconfigure --frontend=noninteractive locales \
 && update-locale LANG=fr_FR.UTF-8
 
-# Dependances
+# Dépendances
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections \
 && apt install xorg -y \
 && apt install dbus-x11 -y \
@@ -66,7 +66,7 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
 # Création d'utilisateur
 RUN useradd -ms /bin/bash $debuser
 
-# Installation de Mate
+# Installation de Mate desktop
 RUN apt install tasksel -y \
 && tasksel install mate-desktop \
 && apt install procps -y \
