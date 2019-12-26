@@ -84,11 +84,14 @@ RUN apt install git -y \
 
 # Partage
 RUN mkdir /home/$debuser/Partage
+COPY installapp.sh .
+RUN chmod +x installapp.sh
 
 # Démarrage
 RUN su - $debuser -c "yes $debpasswd | vncpasswd"
 RUN chown -R $debuser:$debuser /home/$debuser
-CMD su - $debuser -c "vncserver && /home/$debuser/noVNC/utils/launch.sh --vnc localhost:5901"
+CMD bash installapp.sh \
+&& su - $debuser -c "vncserver && /home/$debuser/noVNC/utils/launch.sh --vnc localhost:5901"
 
 # Password
 RUN yes $debpasswd | passwd $debuser\
