@@ -1,5 +1,6 @@
 # Image de base
 FROM kalilinux/kali-rolling
+MAINTAINER Daniel DOS SANTOS <daniel.massy91@gmail.com>
 
 # Variables
 ENV debuser="daniel"
