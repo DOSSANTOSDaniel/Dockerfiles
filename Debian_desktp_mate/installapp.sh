@@ -1,7 +1,7 @@
 # Description:
-#	Permet l'installation de mes applications
+#	Permet l'installation d'applications supplémentaires
 #----------------------------------------------------------------#
-# Usage: ./InstallGUIAppExtra.sh
+# Usage: ./installapp.sh
 #	Exécuter le script en root!
 #
 # Auteurs:
