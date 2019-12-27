@@ -13,21 +13,12 @@
 ### Installation
 
 # Mise à jour
-apt clean 
 apt update 
-apt upgrade -y 
 apt full-upgrade -y
 
 # variables
 usertos="root"
 versiontor=9.0.1
-
-# installation de simplenote
-wget https://github.com/Automattic/simplenote-electron/releases/download/v1.10.0/Simplenote-linux-1.10.0-amd64.deb
-apt install gconf2 -y
-dpkg -i Simplenote-linux-1.10.0-amd64.deb
-sleep 1
-rm Simplenote-linux-1.10.0-amd64.deb
 
 # Installation de Visual Studio Code
 wget http://packages.microsoft.com/repos/vscode/pool/main/c/code/code_1.40.1-1573664190_amd64.deb
@@ -42,20 +33,6 @@ git clone https://github.com/LionSec/katoolin.git
 cp katoolin/katoolin.py /usr/bin/katoolin
 chmod +x /usr/bin/katoolin
 rm -rf katoolin
-
-# App de secu
-apt install htop -y 
-apt install nethogs -y
-apt install maltego -y
-apt install metasploit-framework -y
-apt install burpsuite -y
-apt install aircrack-ng -y
-apt install hydra -y
-apt install nmap -y
-apt install beef-xss -y
-apt install nikto -y
-apt install psmisc -y
-apt install openvas -y
 
 # Installation de tor
 mkdir -p /root/Documents/TOR/
