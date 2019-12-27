@@ -5,4 +5,4 @@
  * Connexion sur l'interface graphique à l'aide d'un navigateur web (NoVNC).
  * Interface graphique: XFCE.
  * Script bash complétant la création de l'image par l'ajout de quelques applications, comme par exemple katoolin qui permet d'avoir le menu d'applications de Kali.
-* lanceratoolin puis apuyer sur 4 pour installer le menu.
+* Lancer katoolin puis appuyer sur 4 pour installer le menu.
