@@ -4,4 +4,4 @@
  * Avec Debian Buster.
  * Connexion sur l'interface graphique à l'aide d'un navigateur web (NoVNC).
  * Interface graphique: Mate.
- * Scripte complétant la création de l'image par l'ajout de quelques applications.
+ * Script bash complétant la création de l'image par l'ajout de quelques applications.
