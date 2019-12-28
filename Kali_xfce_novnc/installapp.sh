@@ -28,11 +28,8 @@ chmod +x /usr/bin/katoolin
 rm -rf Katoolin-Robust
 
 # Autres programmes
-apt install filezilla -y
-apt install filezilla-common -y
 apt install terminator -y
 apt install alsa-utils -y
-apt install synaptic -y
 apt install tree -y
 apt install screen -y
 apt install vim -y
