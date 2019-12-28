@@ -32,7 +32,6 @@ apt install terminator -y
 apt install alsa-utils -y
 apt install tree -y
 apt install screen -y
-apt install vim -y
 apt install lynx -y
 
 # Installation de tor
