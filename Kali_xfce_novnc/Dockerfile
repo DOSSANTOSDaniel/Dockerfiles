@@ -43,7 +43,6 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
 && apt install iproute2 -y \
 && apt install wget -y \
 && apt install curl -y \
-&& apt install iproute2 -y \
 && apt install vim -y \
 && apt install dialog -y \ 
 && apt install apt-utils -y \ 
@@ -55,13 +54,13 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
 && apt install sudo -y \
 && apt install gpg-agent -y \
 && apt install build-essential -y \
-&& apt install openssh-server -y \
 && apt install python -y \
 && apt install python3 -y \
 && apt install python3-distutils -y \
 && apt install python3-tk -y \
 && apt install python3-dbus -y \
-&& apt install xpdf -y
+&& apt install inetutils-ping -y \
+&& apt install procps -y
 
 # Répertoire de travail
 WORKDIR /root
@@ -70,9 +69,7 @@ WORKDIR /root
 RUN useradd -ms /bin/bash $debuser
 
 # Installation de xfce
-RUN apt install xfce4 -y \
-&& apt install xfce4-goodies -y \
-&& apt install procps -y
+RUN apt install kali-desktop-xfce -y
 
 # Installation de vnc4server
 RUN apt install vnc4server -y
