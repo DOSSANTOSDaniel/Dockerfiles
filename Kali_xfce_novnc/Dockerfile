@@ -27,7 +27,6 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
 && apt install xorg -y \
 && apt install dbus-x11 -y \
 && apt install x11-xserver-utils -y \
-&& apt install procps -y \
 && apt install xdg-utils -y \
 && apt install xdg-user-dirs -y \
 && apt install menu-xdg -y \
