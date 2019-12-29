@@ -26,51 +26,35 @@ RUN apt install locales -y \
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections \
 && apt install xorg -y \
 && apt install dbus-x11 -y \
-&& apt install x11-xserver-utils -y \
-&& apt install procps -y \
 && apt install xdg-utils -y \
-&& apt install xdg-user-dirs -y \
 && apt install menu-xdg -y \
 && apt install mime-support -y \
 && apt install desktop-file-utils -y \
 && apt install mesa-utils -y \
-&& apt install psmisc -y \
 && apt install mesa-utils-extra -y \
-&& apt install libxv1 -y \
-&& apt install python -y \
 && apt install python-numpy -y \
 && apt install firefox-esr -y \
-&& apt install iproute2 -y \
 && apt install wget -y \
 && apt install curl -y \
-&& apt install iproute2 -y \
 && apt install vim -y \
 && apt install dialog -y \ 
 && apt install apt-utils -y \ 
 && apt install apt-file -y \
 && apt install apt-transport-https -y \
-&& apt install ca-certificates -y \
 && apt install software-properties-common -y \
-&& apt install man -y \
 && apt install sudo -y \
 && apt install gpg-agent -y \
 && apt install build-essential -y \
-&& apt install openssh-server -y \
-&& apt install python -y \
-&& apt install python3 -y \
 && apt install python3-distutils -y \
-&& apt install python3-tk -y \
-&& apt install python3-dbus -y \
-&& apt install xpdf -y
+&& apt install git -y \
+&& apt install python3-tk -y
 
 # Création d'utilisateur
 RUN useradd -ms /bin/bash $debuser
 
 # Installation de Mate desktop
 RUN apt install tasksel -y \
-&& tasksel install mate-desktop \
-&& apt install procps -y \
-&& apt install fortunes -y
+&& tasksel install mate-desktop
 
 # Installation de vnc4server
 RUN apt install vnc4server -y
@@ -79,8 +63,7 @@ RUN apt install vnc4server -y
 WORKDIR /home/$debuser
 
 # Installation de NoVNC
-RUN apt install git -y \
-&& git clone https://github.com/novnc/noVNC.git
+RUN git clone https://github.com/novnc/noVNC.git
 
 # Partage
 RUN mkdir /home/$debuser/Partage
