@@ -8,7 +8,7 @@
 
 Image basé sur Debian Buster, cette image permet d'avoir une station de travail avec une interface graphique en local, la connexion à la machine se fait via NoVNC.
 
-<a data-flickr-embed="true" href="https://www.flickr.com/photos/186226328@N07/49290970707/in/dateposted-public/" title="MateDesktopVNC"><img src="https://live.staticflickr.com/65535/49290970707_ead7ca1cee_k.jpg" width="100%" alt="MateDesktopVNC"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+<a data-flickr-embed="true" href="https://www.flickr.com/photos/186226328@N07/49290970707/in/dateposted-public/" title="MateDesktopVNC"><img src="https://live.staticflickr.com/65535/49290970707_ead7ca1cee_k.jpg" width="100%" alt="MateDesktopVNC"></a>
 
 ## Usage
 
