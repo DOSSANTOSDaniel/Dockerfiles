@@ -34,8 +34,6 @@ apt install gparted -y
 apt install diodon -y
 apt install remmina -y
 apt install terminator -y
-apt install zenmap -y
-apt install fslint -y
 apt install alsa-utils -y
 apt install tree -y
 apt install screen -y
