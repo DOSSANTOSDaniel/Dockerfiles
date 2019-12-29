@@ -9,7 +9,7 @@
 
 Image basé sur Kali Linux, cette image permet d'avoir une station de travail avec une interface graphique en local, la connexion à la machine se fait via NoVNC.
 
-<a data-flickr-embed="true" href="https://www.flickr.com/photos/186226328@N07/49290901837/in/dateposted-public/" title="kali"><img src="https://live.staticflickr.com/65535/49290901837_a2ea86ae8e_k.jpg" width="100%" alt="kali"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+<a data-flickr-embed="true" href="https://www.flickr.com/photos/186226328@N07/49290901837/in/dateposted-public/" title="kali"><img src="https://live.staticflickr.com/65535/49290901837_a2ea86ae8e_k.jpg" width="100%" alt="kali"></a>
 
 ## Usage
 
