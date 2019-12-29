@@ -49,6 +49,7 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
 && apt install build-essential -y \
 && apt install python3-distutils -y \
 && apt install python3-tk -y \
+&& apt install git -y \
 && apt install inetutils-ping -y
 
 # Répertoire de travail
@@ -64,8 +65,7 @@ RUN apt install kali-desktop-xfce -y
 RUN apt install vnc4server -y
 
 # Installation de NoVNC
-RUN apt install git -y \
-&& git clone https://github.com/novnc/noVNC.git
+RUN git clone https://github.com/novnc/noVNC.git
 
 # Partage
 RUN mkdir /home/$debuser/Partage
