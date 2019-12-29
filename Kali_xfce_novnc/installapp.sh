@@ -21,7 +21,6 @@ usertos="root"
 versiontor=9.0.1
 
 # Install Katoolin
-apt install git
 git clone https://github.com/mkrupczak3/Katoolin-Robust.git
 cp Katoolin-Robust/katoolin.py /usr/bin/katoolin
 chmod +x /usr/bin/katoolin
