@@ -52,6 +52,30 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
 && apt install git -y \
 && apt install inetutils-ping -y
 
+# Autres programmes
+RUN apt install terminator -y \
+&& apt install alsa-utils -y \
+&& apt install tree -y \
+&& apt install screen -y \
+&& apt install lynx -y \
+
+# Installation de Katoolin
+RUN git clone https://github.com/mkrupczak3/Katoolin-Robust.git \
+&& cp Katoolin-Robust/katoolin.py /usr/bin/katoolin \
+&& chmod +x /usr/bin/katoolin \
+&& rm -rf Katoolin-Robust
+
+# Installation de tor
+RUN mkdir -p /root/Documents/TOR/ \
+&& cd /root/Documents/TOR/ \
+&& lynx -dump https://dist.torproject.org/torbrowser | sed "13 q" \
+&& wget https://dist.torproject.org/torbrowser/"$versiontor"/tor-browser-linux64-"$versiontor"_fr.tar.xz \
+&& tar xvf tor-browser-linux64* \
+&& cd /root/Documents/TOR/tor-browser_fr/ \
+&& ./start-tor-browser.desktop --register-app \
+&& sed -i -e 's/-eq 0/-eq 1000/' /root/Documents/TOR/tor-browser_fr/Browser/start-tor-browser \
+&& rm -rf /root/Documents/TOR/*_fr.tar.xz
+
 # Répertoire de travail
 WORKDIR /root
 
@@ -75,9 +99,7 @@ RUN chmod +x installapp.sh
 # Démarrage
 RUN yes $debpasswd | vncpasswd
 RUN chown -R $debuser:$debuser /home/$debuser
-CMD bash installapp.sh \
-&& vncserver \
-&& /root/noVNC/utils/launch.sh --vnc localhost:5901
+CMD vncserver && /root/noVNC/utils/launch.sh --vnc localhost:5901
 
 # Password
 RUN yes $debpasswd | passwd $debuser \
