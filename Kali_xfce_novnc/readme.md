@@ -1,6 +1,6 @@
 # Image Docker de Kali Linux avec l'interface graphique XFCE
 
- Dockerfile permettant d'avoir un conteneur avec un desktop près à l'emplois:
+ Dockerfile permettant d'avoir un conteneur avec un desktop prêt à l’emploi:
  * Avec Kali Linux.
  * Connexion sur l'interface graphique à l'aide d'un navigateur web (NoVNC).
  * Interface graphique: XFCE.
